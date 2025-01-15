@@ -1,9 +1,10 @@
 package com.codyking.moviematch.model;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -11,6 +12,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToMany(mappedBy = "user")
+    private List<MovieLog> movieLogs = new ArrayList<>();
 
     @Column(name = "username", nullable = false, unique = true)
     private String username;
@@ -21,29 +25,29 @@ public class User {
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
-    @Column(name = "first_name", nullable = true)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = true)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "date_of_birth", nullable = true)
+    @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
-    @Column(name = "profile_picture", nullable = true)
+    @Column(name = "profile_picture")
     private String profilePicture;
 
     @Lob
-    @Column(name = "bio", nullable = true)
+    @Column(name = "bio")
     private String bio;
 
-    @Column(name = "created_at", nullable = true)
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = true)
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @Column(name = "last_login", nullable = true)
+    @Column(name = "last_login")
     private LocalDateTime lastLogin;
 
     public User() {}
