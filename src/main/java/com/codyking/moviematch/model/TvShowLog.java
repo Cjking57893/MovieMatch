@@ -1,12 +1,13 @@
 package com.codyking.moviematch.model;
 
 import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "movie_logs")
-public class MovieLog {
+@Table(name = "tv_show_logs")
+public class TvShowLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

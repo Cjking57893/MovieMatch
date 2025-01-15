@@ -16,6 +16,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<MovieLog> movieLogs = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<TvShowLog> tvShowLogs = new ArrayList<>();
+
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
