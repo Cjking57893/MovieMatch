@@ -11,6 +11,7 @@ public class MovieLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Many movie logs can be associated with one user.
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -28,6 +29,10 @@ public class MovieLog {
     @Column(name = "rating")
     private BigDecimal rating;
 
+    // Default constructor required by JPA.
+    public MovieLog() {}
+
+    // Getters and Setters for the fields.
     public Long getId() {
         return id;
     }
@@ -72,6 +77,7 @@ public class MovieLog {
         this.rating = rating;
     }
 
+    // Represents the user's status for this movie (e.g., watched or want to watch).
     public enum Status {
         watched,
         want_to_watch

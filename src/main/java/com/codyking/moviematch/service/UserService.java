@@ -32,11 +32,13 @@ public class UserService {
     }
 
     public User updateUser(Long id, User user) {
-        if (userRepository.existsById(id)) {
-            user.setId(id);
-            return userRepository.save(user);
+        if (!userRepository.existsById(id)) {
+            throw new RuntimeException("User not found");
         }
-        return null;
+
+        user.setId(id);
+
+        return userRepository.save(user);
     }
 
     public void deleteUser(Long id) {
