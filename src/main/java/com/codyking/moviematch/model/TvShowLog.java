@@ -11,6 +11,7 @@ public class TvShowLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Many TV show logs can be associated with one user.
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -27,6 +28,16 @@ public class TvShowLog {
 
     @Column(name = "rating")
     private BigDecimal rating;
+
+    // Default constructor required by JPA.
+    public TvShowLog() {}
+
+    // Getters and Setters for the fields.
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
@@ -72,6 +83,7 @@ public class TvShowLog {
         this.rating = rating;
     }
 
+    // Represents the user's status for this TV Show (e.g., watched or want to watch).
     public enum Status {
         watched,
         want_to_watch

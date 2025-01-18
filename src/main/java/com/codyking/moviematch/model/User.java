@@ -13,9 +13,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // One user can be associated with many movie logs.
     @OneToMany(mappedBy = "user")
     private List<MovieLog> movieLogs = new ArrayList<>();
 
+    // One user can be associated with many tv show logs.
     @OneToMany(mappedBy = "user")
     private List<TvShowLog> tvShowLogs = new ArrayList<>();
 
@@ -40,6 +42,7 @@ public class User {
     @Column(name = "profile_picture")
     private String profilePicture;
 
+    // Storing bio as a "Large Object" (LOB) since it will be a long piece of text.
     @Lob
     @Column(name = "bio")
     private String bio;
@@ -53,7 +56,13 @@ public class User {
     @Column(name = "last_login")
     private LocalDateTime lastLogin;
 
+    // Default constructor required by JPA.
     public User() {}
+
+    // Getters and Setters for the fields.
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
