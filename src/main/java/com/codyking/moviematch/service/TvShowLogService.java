@@ -31,12 +31,20 @@ public class TvShowLogService {
         return tvShowLogRepository.save(tvShowLog);
     }
 
-    public void updateTvShowLog(Long id, TvShowLog tvShowLog) {
+    public TvShowLog updateTvShowLog(Long id, TvShowLog tvShowLog) {
         if (!tvShowLogRepository.existsById(id)) {
             throw new RuntimeException("Tv Show Log not found");
         }
 
         tvShowLog.setId(id);
+
+        return tvShowLogRepository.save(tvShowLog);
+    }
+
+    public void deleteTvShowLog(Long id) {
+        if (!tvShowLogRepository.existsById(id)) {
+            throw new RuntimeException("Tv Show Log not found");
+        }
 
         tvShowLogRepository.deleteById(id);
     }

@@ -42,7 +42,7 @@ public class UserController {
         try {
             User savedUser = userService.createUser(user);
 
-            URI location = URI.create("/api/movielogs/" + savedUser.getId());
+            URI location = URI.create("/api/users/" + savedUser.getId());
             return ResponseEntity.created(location).body(savedUser);
         }
         catch (Exception e) {
