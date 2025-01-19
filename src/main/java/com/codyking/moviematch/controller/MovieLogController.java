@@ -3,13 +3,11 @@ package com.codyking.moviematch.controller;
 import com.codyking.moviematch.model.MovieLog;
 import com.codyking.moviematch.service.MovieLogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/movielogs")
@@ -29,7 +27,7 @@ public class MovieLogController {
 
     @GetMapping("/{id}")
     public ResponseEntity<MovieLog> getMovieLog(@PathVariable Long id) {
-        MovieLog movieLog = movieLogService.findMovieLogById(id);
+        MovieLog movieLog = movieLogService.getMovieLogById(id);
 
         if (movieLog != null) {
             return ResponseEntity.ok(movieLog);

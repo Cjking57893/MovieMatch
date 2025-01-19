@@ -22,7 +22,7 @@ public class TvShowLogService {
         return tvShowLogRepository.findAll();
     }
 
-    public TvShowLog findTvShowLogById(Long id) {
+    public TvShowLog getTvShowLogById(Long id) {
         Optional<TvShowLog> tvShowLog = tvShowLogRepository.findById(id);
         return tvShowLog.orElse(null);
     }

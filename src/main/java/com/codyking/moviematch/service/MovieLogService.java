@@ -22,7 +22,7 @@ public class MovieLogService {
         return movieLogRepository.findAll();
     }
 
-    public MovieLog findMovieLogById(Long id) {
+    public MovieLog getMovieLogById(Long id) {
         Optional<MovieLog> movieLog = movieLogRepository.findById(id);
         return movieLog.orElse(null);
     }
