@@ -31,7 +31,7 @@ public class MovieLog {
 
     public MovieLog() {}
 
-
+    // Getters and Setters for the fields.
     public void setId(Long id) {
         this.id = id;
     }
@@ -80,6 +80,7 @@ public class MovieLog {
         this.rating = rating;
     }
 
+    // Represents the user's status for this Movie (e.g., watched or want to watch).
     public enum Status {
         watched,
         want_to_watch

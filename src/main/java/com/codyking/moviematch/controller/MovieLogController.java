@@ -2,7 +2,6 @@ package com.codyking.moviematch.controller;
 
 import com.codyking.moviematch.model.MovieLog;
 import com.codyking.moviematch.service.MovieLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,6 @@ public class MovieLogController {
 
     private final MovieLogService movieLogService;
 
-    @Autowired
     public MovieLogController(MovieLogService movieLogService) {
         this.movieLogService = movieLogService;
     }

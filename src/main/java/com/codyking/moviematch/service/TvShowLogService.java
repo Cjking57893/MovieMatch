@@ -2,7 +2,6 @@ package com.codyking.moviematch.service;
 
 import com.codyking.moviematch.model.TvShowLog;
 import com.codyking.moviematch.repository.TvShowLogRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,6 @@ public class TvShowLogService {
 
     private final TvShowLogRepository tvShowLogRepository;
 
-    @Autowired
     public TvShowLogService(TvShowLogRepository tvShowLogRepository) {
         this.tvShowLogRepository = tvShowLogRepository;
     }

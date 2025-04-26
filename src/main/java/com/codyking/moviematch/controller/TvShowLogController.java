@@ -2,7 +2,6 @@ package com.codyking.moviematch.controller;
 
 import com.codyking.moviematch.model.TvShowLog;
 import com.codyking.moviematch.service.TvShowLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,6 @@ public class TvShowLogController {
 
     private final TvShowLogService tvShowLogService;
 
-    @Autowired
     public TvShowLogController(TvShowLogService tvShowLogService) {
         this.tvShowLogService = tvShowLogService;
     }

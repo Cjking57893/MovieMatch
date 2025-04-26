@@ -33,8 +33,6 @@ public class TvShowLog {
     public TvShowLog() {}
 
     // Getters and Setters for the fields.
-
-
     public void setId(Long id) {
         this.id = id;
     }

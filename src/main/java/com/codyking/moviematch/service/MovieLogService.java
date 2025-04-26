@@ -2,7 +2,6 @@ package com.codyking.moviematch.service;
 
 import com.codyking.moviematch.model.MovieLog;
 import com.codyking.moviematch.repository.MovieLogRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,6 @@ public class MovieLogService {
 
     private final MovieLogRepository movieLogRepository;
 
-    @Autowired
     public MovieLogService(MovieLogRepository movieLogRepository) {
         this.movieLogRepository = movieLogRepository;
     }
