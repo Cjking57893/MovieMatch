@@ -29,10 +29,8 @@ public class MovieLog {
     @Column(name = "rating")
     private BigDecimal rating;
 
-    // Default constructor required by JPA.
     public MovieLog() {}
 
-    // Getters and Setters for the fields.
 
     public void setId(Long id) {
         this.id = id;
@@ -82,7 +80,6 @@ public class MovieLog {
         this.rating = rating;
     }
 
-    // Represents the user's status for this movie (e.g., watched or want to watch).
     public enum Status {
         watched,
         want_to_watch
