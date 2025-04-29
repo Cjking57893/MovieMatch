@@ -16,7 +16,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class MovieLogServiceTest {
+public class MovieLogServiceTests {
 
     @Mock
     private MovieLogRepository movieLogRepository;

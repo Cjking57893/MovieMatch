@@ -18,7 +18,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class TvShowLogTest {
+public class TvShowLogServiceTests {
     @Mock
     private TvShowLogRepository tvShowLogRepository;
 
@@ -85,7 +85,7 @@ public class TvShowLogTest {
         when(tvShowLogRepository.existsById(fakeTvShowLog1.getId())).thenReturn(true);
         when(tvShowLogRepository.save(updatedFakeTvShowLog1)).thenReturn(updatedFakeTvShowLog1);
 
-        TvShowLog result = tvShowLogService.updateTvShowLog(1L, updatedFakeTvShowLog1);
+        TvShowLog result = tvShowLogService.updateTvShowLog(fakeTvShowLog1.getId(), updatedFakeTvShowLog1);
 
         assertThrows(RuntimeException.class, () ->
                 tvShowLogService.updateTvShowLog(2L, updatedFakeTvShowLog1)
@@ -97,17 +97,17 @@ public class TvShowLogTest {
 
     @Test
     void testDeleteTvShowLog() {
-        TvShowLog fakeMoveLog1 = new TvShowLog();
-        fakeMoveLog1.setId(1L);
+        TvShowLog fakeTvShowLog1 = new TvShowLog();
+        fakeTvShowLog1.setId(1L);
 
         when(tvShowLogRepository.existsById(1L)).thenReturn(true);
 
-        tvShowLogService.deleteTvShowLog(1L);
+        tvShowLogService.deleteTvShowLog(fakeTvShowLog1.getId());
 
         assertThrows(RuntimeException.class, () ->
                 tvShowLogService.deleteTvShowLog(2L)
         );
 
-        verify(tvShowLogRepository).deleteById(1L);
+        verify(tvShowLogRepository).deleteById(fakeTvShowLog1.getId());
     }
 }
