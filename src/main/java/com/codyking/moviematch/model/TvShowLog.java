@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class TvShowLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     // Many TV show logs can be associated with one user.
     @ManyToOne
