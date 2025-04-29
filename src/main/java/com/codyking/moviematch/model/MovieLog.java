@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class MovieLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     // Many movie logs can be associated with one user.
     @ManyToOne
