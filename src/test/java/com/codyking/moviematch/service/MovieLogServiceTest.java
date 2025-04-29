@@ -84,7 +84,7 @@ public class MovieLogServiceTest {
         when(movieLogRepository.existsById(fakeMovieLog1.getId())).thenReturn(true);
         when(movieLogRepository.save(updatedFakeMovieLog1)).thenReturn(updatedFakeMovieLog1);
 
-        MovieLog result = movieLogService.updateMovieLog(1L, updatedFakeMovieLog1);
+        MovieLog result = movieLogService.updateMovieLog(fakeMovieLog1.getId(), updatedFakeMovieLog1);
 
         assertThrows(RuntimeException.class, () ->
             movieLogService.updateMovieLog(2L, updatedFakeMovieLog1)
@@ -96,12 +96,12 @@ public class MovieLogServiceTest {
 
     @Test
     void testDeleteMovieLog() {
-        MovieLog fakeMoveLog1 = new MovieLog();
-        fakeMoveLog1.setId(1L);
+        MovieLog fakeMovieLog1 = new MovieLog();
+        fakeMovieLog1.setId(1L);
 
-        when(movieLogRepository.existsById(1L)).thenReturn(true);
+        when(movieLogRepository.existsById(fakeMovieLog1.getId())).thenReturn(true);
 
-        movieLogService.deleteMovieLog(1L);
+        movieLogService.deleteMovieLog(fakeMovieLog1.getId());
 
         assertThrows(RuntimeException.class, () ->
             movieLogService.deleteMovieLog(2L)
