@@ -1,4 +1,4 @@
-name: Maven Build Test - Linux
+name: Maven Build Test - Windows
 
 on:
   push:
