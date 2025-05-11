@@ -2,12 +2,8 @@ name: Maven Build Test - Windows
 
 on:
   push:
-    branches-ignore:
-      - main
-  pull_request:
-    branches-ignore:
-      - main
-  workflow_dispatch:
+    branches:
+      - '**'
 
 jobs:
   build:
