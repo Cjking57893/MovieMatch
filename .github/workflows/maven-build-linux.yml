@@ -1,4 +1,4 @@
-name: Maven Build Test for Dev Environment
+name: Maven Build Test - Linux
 
 on: 
   push:
