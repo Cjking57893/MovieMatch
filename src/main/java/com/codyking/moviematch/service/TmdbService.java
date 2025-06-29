@@ -29,7 +29,7 @@ public class TmdbService {
         try {
             return tmdbSearch.searchMovie(movieName, false, "en-US", null, pageNum, null, null).getResults();
         } catch (TmdbException e) {
-            System.out.println("Error occurred while searching for movie");
+            System.out.println(e);
             return null;
         }
     }

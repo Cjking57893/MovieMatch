@@ -17,13 +17,18 @@ public class MovieController {
     public MovieController(TmdbService tmdbService) { this.tmdbService = tmdbService; }
 
     @GetMapping("/{pageNum}")
-    public ResponseEntity<List<Movie>> getMovieSearch(@PathVariable int pageNum, @RequestBody MovieSearchRequestDto movieSearchRequestDto) {
+    public ResponseEntity<?> getMovieSearch(@PathVariable int pageNum, @RequestBody MovieSearchRequestDto movieSearchRequestDto) {
         List<Movie> result = tmdbService.searchMovie(movieSearchRequestDto.getQuery(),
                                                     pageNum,
                                                     movieSearchRequestDto.getPrimaryReleaseYear(),
                                                     movieSearchRequestDto.getRegion(),
                                                     movieSearchRequestDto.getYear());
-        return ResponseEntity.ok(result);
+        if (result != null) {
+            return ResponseEntity.ok(result);
+        }
+        else {
+            return ResponseEntity.status(503).body("Failed to fetch TMDB data. Please contact administrator and try again later.");
+        }
     }
 
 }
