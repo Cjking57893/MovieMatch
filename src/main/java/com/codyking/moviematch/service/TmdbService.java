@@ -18,12 +18,13 @@ import java.util.List;
 @Service
 public class TmdbService {
 
-    @Value("${TMDB_API_KEY}")
-    private String apiKey;
+    private final TmdbApi tmdbApi;
 
-    TmdbApi tmdbApi = new TmdbApi(apiKey);
+    public TmdbService(@Value("${TMDB_API_KEY}") String apiKey) {
+        this.tmdbApi = new TmdbApi(apiKey);
+    }
 
-    public List<Movie> searchMovie(String movieName, int pageNum) {
+    public List<Movie> searchMovie(String movieName, int pageNum, String primaryReleaseYear, String region, String year) {
         TmdbSearch tmdbSearch = tmdbApi.getSearch();
         try {
             return tmdbSearch.searchMovie(movieName, false, "en-US", null, pageNum, null, null).getResults();
