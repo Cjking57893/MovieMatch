@@ -3,9 +3,10 @@ package com.codyking.moviematch.dto;
 public class MovieSearchRequestDto {
 
     private String query;
-    private String primaryReleaseYear;
-    private String region;
-    private String year;
+    private String language = "en-US";
+    private String primaryReleaseYear = null;
+    private String region = null;
+    private String year = null;
 
     public MovieSearchRequestDto(String query, String primaryReleaseYear, String region, String year) {
         this.query = query;
@@ -44,5 +45,13 @@ public class MovieSearchRequestDto {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }

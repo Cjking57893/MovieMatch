@@ -20,6 +20,7 @@ public class MovieController {
     public ResponseEntity<?> getMovieSearch(@PathVariable int pageNum, @RequestBody MovieSearchRequestDto movieSearchRequestDto) {
         List<Movie> result = tmdbService.searchMovie(movieSearchRequestDto.getQuery(),
                                                     pageNum,
+                                                    movieSearchRequestDto.getLanguage(),
                                                     movieSearchRequestDto.getPrimaryReleaseYear(),
                                                     movieSearchRequestDto.getRegion(),
                                                     movieSearchRequestDto.getYear());

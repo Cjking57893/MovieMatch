@@ -24,10 +24,10 @@ public class TmdbService {
         this.tmdbApi = new TmdbApi(apiKey);
     }
 
-    public List<Movie> searchMovie(String movieName, int pageNum, String primaryReleaseYear, String region, String year) {
+    public List<Movie> searchMovie(String movieName, int pageNum, String language, String primaryReleaseYear, String region, String year) {
         TmdbSearch tmdbSearch = tmdbApi.getSearch();
         try {
-            return tmdbSearch.searchMovie(movieName, false, "en-US", null, pageNum, null, null).getResults();
+            return tmdbSearch.searchMovie(movieName, false, language, primaryReleaseYear, pageNum, region, year).getResults();
         } catch (TmdbException e) {
             System.out.println(e);
             return null;
