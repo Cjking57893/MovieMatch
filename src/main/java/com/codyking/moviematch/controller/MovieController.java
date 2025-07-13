@@ -1,8 +1,14 @@
 package com.codyking.moviematch.controller;
 
+import info.movito.themoviedbapi.model.movies.MovieDb;
+import io.swagger.v3.oas.annotations.*;
 import com.codyking.moviematch.dto.MovieSearchRequestDto;
 import com.codyking.moviematch.service.TmdbService;
 import info.movito.themoviedbapi.model.core.Movie;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +22,7 @@ public class MovieController {
 
     public MovieController(TmdbService tmdbService) { this.tmdbService = tmdbService; }
 
-    @GetMapping("/{pageNum}")
+    @GetMapping("/search/{pageNum}")
     public ResponseEntity<?> getMovieSearch(@PathVariable int pageNum, @RequestBody MovieSearchRequestDto movieSearchRequestDto) {
         List<Movie> result = tmdbService.searchMovie(movieSearchRequestDto.getQuery(),
                                                     pageNum,
@@ -24,6 +30,17 @@ public class MovieController {
                                                     movieSearchRequestDto.getPrimaryReleaseYear(),
                                                     movieSearchRequestDto.getRegion(),
                                                     movieSearchRequestDto.getYear());
+        if (result != null) {
+            return ResponseEntity.ok(result);
+        }
+        else {
+            return ResponseEntity.status(503).body("Failed to fetch TMDB data. Please contact administrator and try again later.");
+        }
+    }
+
+    @GetMapping("/find/{movieId}")
+    public ResponseEntity<?> getMovie(@PathVariable int movieId, @RequestParam(required = false, defaultValue = "en-US") String language) {
+        MovieDb result = tmdbService.getMovie(movieId, language);
         if (result != null) {
             return ResponseEntity.ok(result);
         }

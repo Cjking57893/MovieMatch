@@ -34,6 +34,16 @@ public class TmdbService {
         }
     }
 
+    public MovieDb getMovie(int movieId, String language) {
+        TmdbMovies tmdbMovies = tmdbApi.getMovies();
+        try {
+            return tmdbMovies.getDetails(movieId, language);
+        } catch (TmdbException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
     public List<TvSeries> searchTvShow(String tvShowName, int pageNum) {
         TmdbSearch tmdbSearch = tmdbApi.getSearch();
         try {

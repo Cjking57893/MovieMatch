@@ -1,5 +1,7 @@
 package com.codyking.moviematch.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class MovieSearchRequestDto {
 
     private String query;
