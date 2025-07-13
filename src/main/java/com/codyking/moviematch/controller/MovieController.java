@@ -1,14 +1,9 @@
 package com.codyking.moviematch.controller;
 
 import info.movito.themoviedbapi.model.movies.MovieDb;
-import io.swagger.v3.oas.annotations.*;
 import com.codyking.moviematch.dto.MovieSearchRequestDto;
 import com.codyking.moviematch.service.TmdbService;
 import info.movito.themoviedbapi.model.core.Movie;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.ExampleObject;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

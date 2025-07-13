@@ -2,16 +2,12 @@ package com.codyking.moviematch.service;
 
 import info.movito.themoviedbapi.*;
 import info.movito.themoviedbapi.model.core.Movie;
-import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeries;
-import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.movies.MovieDb;
+import info.movito.themoviedbapi.model.tv.series.TvSeriesDb;
 import info.movito.themoviedbapi.tools.TmdbException;
-import info.movito.themoviedbapi.tools.builders.discover.DiscoverMovieParamBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
@@ -44,12 +40,22 @@ public class TmdbService {
         }
     }
 
-    public List<TvSeries> searchTvShow(String tvShowName, int pageNum) {
+    public List<TvSeries> searchTvShow(String tvShowName, int pageNum, int firstAirDateYear, String language, int year) {
         TmdbSearch tmdbSearch = tmdbApi.getSearch();
         try {
-            return tmdbSearch.searchTv(tvShowName, null, false, "en-US", pageNum, null).getResults();
+            return tmdbSearch.searchTv(tvShowName, firstAirDateYear, false, language, pageNum, null).getResults();
         } catch (TmdbException e) {
-            System.out.println("Error occurred while searching for tv show.");
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public TvSeriesDb getTvShow(int tvShowId, String language) {
+        TmdbTvSeries tmdbTvSeries = tmdbApi.getTvSeries();
+        try {
+            return tmdbTvSeries.getDetails(tvShowId, language);
+        } catch (TmdbException e) {
+            System.out.println(e);
             return null;
         }
     }
