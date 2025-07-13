@@ -1,6 +1,7 @@
 package com.codyking.moviematch.service;
 
 import info.movito.themoviedbapi.*;
+import info.movito.themoviedbapi.model.core.Genre;
 import info.movito.themoviedbapi.model.core.Movie;
 import info.movito.themoviedbapi.model.core.TvSeries;
 import info.movito.themoviedbapi.model.movies.MovieDb;
@@ -40,6 +41,16 @@ public class TmdbService {
         }
     }
 
+    public List<Genre> getMovieGenres(int movieId, String language) {
+        TmdbMovies tmdbMovies = tmdbApi.getMovies();
+        try {
+            return tmdbMovies.getDetails(movieId, language).getGenres();
+        } catch (TmdbException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
     public List<TvSeries> searchTvShow(String tvShowName, int pageNum, int firstAirDateYear, String language, int year) {
         TmdbSearch tmdbSearch = tmdbApi.getSearch();
         try {
@@ -54,6 +65,16 @@ public class TmdbService {
         TmdbTvSeries tmdbTvSeries = tmdbApi.getTvSeries();
         try {
             return tmdbTvSeries.getDetails(tvShowId, language);
+        } catch (TmdbException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public List<Genre> getTvShowGenres(int tvShowId, String language) {
+        TmdbTvSeries tmdbTvSeries = tmdbApi.getTvSeries();
+        try {
+            return tmdbTvSeries.getDetails(tvShowId, language).getGenres();
         } catch (TmdbException e) {
             System.out.println(e);
             return null;

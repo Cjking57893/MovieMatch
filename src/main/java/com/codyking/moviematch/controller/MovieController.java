@@ -1,5 +1,6 @@
 package com.codyking.moviematch.controller;
 
+import info.movito.themoviedbapi.model.core.Genre;
 import info.movito.themoviedbapi.model.movies.MovieDb;
 import com.codyking.moviematch.dto.MovieSearchRequestDto;
 import com.codyking.moviematch.service.TmdbService;
@@ -41,6 +42,17 @@ public class MovieController {
         }
         else {
             return ResponseEntity.status(503).body("Failed to fetch TMDB data. Please contact administrator and try again later.");
+        }
+    }
+
+    @GetMapping("/find/genres/{movieId}")
+    public ResponseEntity<?> getMovieGenres(@PathVariable int movieId, @RequestParam(required = false, defaultValue = "en-US") String language) {
+        List<Genre> result = tmdbService.getMovieGenres(movieId, language);
+        if (result != null) {
+            return ResponseEntity.ok(result);
+        }
+        else {
+            return ResponseEntity.status(503).body("Failed to fetch TMDB data. Please contact administrator and try again.");
         }
     }
 
